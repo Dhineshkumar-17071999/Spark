@@ -10,12 +10,14 @@ class Ingestion():
         self.spark = spark
 
     def ingest_data(self):
-        logging.info("Ingesting started")
-        logging.error("Ingesting started with error")
+        logger = logging.getLogger("Ingest")
+        logger.info("Ingesting started")
+        logger.error("Ingesting started with error")
         # my_list = [1,2,3]
         # df = self.spark.createDataFrame(my_list, IntegerType())
         # df.show()
-        custome_df = self.spark.read.csv("retailstore.csv", header = True)
+        # custome_df = self.spark.read.csv("retailstore.csv", header = True)
+        custome_df = self.spark.sql("select * from fxxcoursedb.fx_course_table")
         # custome_df.show()
         # custome_df.describe().show()
         # custome_df.select('Country').show()

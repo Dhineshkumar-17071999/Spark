@@ -7,6 +7,7 @@ class Transform():
         self.spark = spark
 
     def transform_data(self, df):
-        logging.info("Transforming")
+        logger = logging.getLogger("Persist")
+        logger.info("Transforming")
         df1 = df.na.drop()
         return df1

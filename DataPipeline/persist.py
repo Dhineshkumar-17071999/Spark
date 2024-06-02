@@ -7,6 +7,11 @@ class Persist():
         self.spark = spark
 
     def persist_data(self,df):
-        logging.info("Persisting")
-        logging.warning("Persisting with warning")
-        df.coalesce(1).write.option("header","true").csv("transformed_retailstore")
+        try:
+            logger = logging.getLogger("Persist")
+            logger.info("Persisting")
+            logger.warning("Persisting with warning")
+            df.coalesce(1).write.option("header","true").csv("transformed_retailstore")
+        except Exception as e:
+            logger.error("An error occured while persisting data :"+str(e))
+            raise Exception("HDFS directory already exists")
