@@ -1,0 +1,14 @@
+course_id,course_name,author_name,no_of_reviews
+6,CMS,Unknown,100
+8,CMS,Future,56
+1,JAVA,FutureX,45
+3,Big Data,Future,100
+13,Go Lang,Unknown,105
+7,Python,FutureX,0
+2,Java,FutureXSkill,56
+11,Jenkins,Future,32
+12,Chef,FutureX,121
+4,Linux,Future,100
+10,Ansible,FutureX,123
+5,Microservices,Future,100
+9,Dot Net,FutureXSkill,34
