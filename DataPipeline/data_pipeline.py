@@ -38,6 +38,7 @@ class Pipeline:
     def run_pipeline(self):
         logging.info("run pipeline started")
         ingest_process = ingest.Ingestion(self.spark)
+        ingest_process.read_from_pg()
         df = ingest_process.ingest_data()
         df.show()
         transform_process = transform.Transform(self.spark)
@@ -58,6 +59,6 @@ if __name__ == "__main__":
     pipeline = Pipeline()
     logging.info('spark session created')
     pipeline.create_spark_session()
-    pipeline.create_hive_table()
+    # pipeline.create_hive_table()
     logging.info('run pipeline created')
     pipeline.run_pipeline()
