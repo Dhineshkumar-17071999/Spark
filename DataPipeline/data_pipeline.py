@@ -13,6 +13,7 @@ class Pipeline:
 
     def create_spark_session(self):
         self.spark = SparkSession.builder\
+            .config("spark.jars","postgresql-42.6.2.jar")\
             .appName("my first spark app")\
                 .enableHiveSupport().getOrCreate()
     
@@ -38,7 +39,8 @@ class Pipeline:
     def run_pipeline(self):
         logging.info("run pipeline started")
         ingest_process = ingest.Ingestion(self.spark)
-        ingest_process.read_from_pg()
+        # ingest_process.read_from_pg()
+        ingest_process.read_from_pg_using_jdbc()
         df = ingest_process.ingest_data()
         df.show()
         transform_process = transform.Transform(self.spark)

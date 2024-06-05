@@ -81,5 +81,17 @@ class Ingestion():
             StructField("uhc_labtest_day",StringType(),True),
             StructField("uhc_drug_day",StringType(),True)
         ])
-        sparkDF = self.spark.createDataFrame(pdDF, schema=  schema)
+        sparkDF = self.spark.createDataFrame(pdDF, schema=schema)
         sparkDF.show()
+
+    def read_from_pg_using_jdbc(self):
+        jdbcDF = self.spark.read \
+            .format("jdbc") \
+            .option("url", "jdbc:postgresql://localhost:5432/postgres") \
+            .option("dbtable", "public.count_records_1") \
+            .option("user", "postgres") \
+            .option("password", "1234") \
+            .option("driver", "org.postgresql.Driver") \
+            .load()
+        
+        jdbcDF.show()
