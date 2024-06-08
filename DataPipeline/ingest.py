@@ -94,4 +94,5 @@ class Ingestion():
             .option("driver", "org.postgresql.Driver") \
             .load()
         
-        jdbcDF.show()
+        # jdbcDF.show()
+        return jdbcDF

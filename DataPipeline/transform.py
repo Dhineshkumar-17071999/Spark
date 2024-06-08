@@ -7,9 +7,9 @@ class Transform():
         self.spark = spark
 
     def transform_data(self, df):
-        logger = logging.getLogger("Persist")
+        logger = logging.getLogger("Transform")
         logger.info("Transforming")
         # df1 = df.na.drop()
-        df1 = df.na.fill('Unknown',["author_name"])
-        df2 = df1.na.fill("0",["no_of_reviews"])
+        df1 = df.na.fill('Unknown',["family_count"])
+        df2 = df1.na.fill("0",["family_member_count"])
         return df2
